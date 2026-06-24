@@ -12,16 +12,21 @@ export default function SonScroll() {
     // ── Lenis smooth scroll ──────────────────────────────
     const lenis = new Lenis({ lerp: 0.08 });
     lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    const lenisRaf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(lenisRaf);
     gsap.ticker.lagSmoothing(0);
 
     // ── Curseur custom (toujours actif) ─────────────────
     const dot = document.getElementById('cursorDot');
+    let tickCursor: (() => void) | null = null;
+    let onMove: ((e: MouseEvent) => void) | null = null;
+    const ac = new AbortController();
+
     if (dot) {
       let mx = 0, my = 0, cx = 0, cy = 0;
-      const onMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; };
+      onMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; };
       document.addEventListener('mousemove', onMove);
-      const tickCursor = () => {
+      tickCursor = () => {
         cx += (mx - cx) * 0.12;
         cy += (my - cy) * 0.12;
         gsap.set(dot, { x: cx, y: cy });
@@ -29,17 +34,23 @@ export default function SonScroll() {
       gsap.ticker.add(tickCursor);
       const hoverEls = document.querySelectorAll('a, button, .--magnet');
       hoverEls.forEach(el => {
-        el.addEventListener('mouseenter', () => dot.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => dot.classList.remove('hovering'));
+        el.addEventListener('mouseenter', () => dot.classList.add('hovering'), { signal: ac.signal });
+        el.addEventListener('mouseleave', () => dot.classList.remove('hovering'), { signal: ac.signal });
       });
     }
 
+    const cleanup = () => {
+      lenis.destroy();
+      gsap.ticker.remove(lenisRaf);
+      if (tickCursor) gsap.ticker.remove(tickCursor);
+      if (onMove) document.removeEventListener('mousemove', onMove);
+      ac.abort();
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+
     // Sortie anticipée si reduced motion (curseur reste actif)
     if (prefersReduced) {
-      return () => {
-        lenis.destroy();
-        ScrollTrigger.getAll().forEach(t => t.kill());
-      };
+      return cleanup;
     }
 
     // ── 10. Header hide/show ─────────────────────────────
@@ -205,7 +216,7 @@ export default function SonScroll() {
 
     // ── 11. Magnet effect ─────────────────────────────────
     document.querySelectorAll<HTMLElement>('.--magnet').forEach(el => {
-      const onMove = (e: MouseEvent) => {
+      const onMagnetMove = (e: MouseEvent) => {
         const rect = el.getBoundingClientRect();
         const cx = rect.left + rect.width / 2;
         const cy = rect.top + rect.height / 2;
@@ -216,14 +227,11 @@ export default function SonScroll() {
       const onLeave = () => {
         gsap.to(el, { x: 0, y: 0, duration: 0.4, ease: 'elastic.out(1,0.4)', overwrite: true });
       };
-      el.addEventListener('mousemove', onMove);
-      el.addEventListener('mouseleave', onLeave);
+      el.addEventListener('mousemove', onMagnetMove, { signal: ac.signal });
+      el.addEventListener('mouseleave', onLeave, { signal: ac.signal });
     });
 
-    return () => {
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+    return cleanup;
   }, []);
 
   return null;
