@@ -1,0 +1,306 @@
+---
+import '../../styles/son-des-matieres.css';
+import SonScroll from '../../components/islands/SonScroll.tsx';
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sous la pluie, libre — Alec Mignot</title>
+  <meta name="description" content="Protection pluie pour fauteuil roulant, née d'une enquête de terrain." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+<div class="cursor__dot" id="cursorDot"></div>
+
+<header class="son-header" id="sonHeader">
+  <div class="son-header__inner">
+    <a href="/#projets" class="son-header__back">← Tous les projets</a>
+    <span class="son-header__title">Sous la pluie, libre</span>
+    <span class="son-header__dot"></span>
+  </div>
+</header>
+
+<main>
+
+  <!-- S1 : HERO -->
+  <section class="component hero-single-work">
+    <div class="hero__container">
+      <div class="hero__text-group">
+        <h1 class="hero__title" id="heroTitle">
+          <span class="word"><span class="word__inner">Sous la</span></span><br>
+          <span class="word"><span class="word__inner">pluie,</span></span><br>
+          <span class="word"><span class="word__inner">libre</span></span>
+        </h1>
+        <div class="hero__meta" id="heroMeta">
+          <span>2024</span>
+          <span>Objet produit</span>
+          <span>Design inclusif</span>
+          <span>Mobilité</span>
+        </div>
+        <div class="hero__description" id="heroDesc">
+          <p>Protection pluie pour fauteuil roulant, née d'une enquête de terrain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK-INFO BAR -->
+  <div class="work-info" id="workInfo">
+    <div class="work-info__inner">
+      <div class="work-info__col">
+        <span class="work-info__label">type</span>
+        <span class="work-info__value">Objet produit</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">public</span>
+        <span class="work-info__value">Mobilité réduite</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">matériaux</span>
+        <span class="work-info__value">Tissu, structure</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">approche</span>
+        <span class="work-info__value">Design inclusif</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">année</span>
+        <span class="work-info__value">2024</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 : COLLAGE 1 (reverse) -->
+  <section class="component component--collage">
+    <div class="collage__wrap collage__wrap--reverse">
+      <div class="collage__top">
+        <div class="placeholder" style="aspect-ratio:16/9;background:#c8d4dc;">
+          <span>Photo : vue d'ensemble du prototype sur fauteuil roulant, extérieur</span>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder" style="aspect-ratio:200/47;background:#e0e8ec;">
+          <span>Photo : rue sous la pluie, perspective piéton — panoramique</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 : TEXTE INTRO -->
+  <section class="component component--text">
+    <div class="text__container">
+      <div class="text__body">
+        <p>Rouler sous la pluie en fauteuil roulant, c'est affronter une pluie de face, des mains trempées sur les roues, et une dépendance immédiate à l'entourage. Les solutions existantes — imperméables encombrants, parapluies impossibles à tenir — ne répondent pas à la réalité du terrain. Ce projet part d'une enquête menée avec des utilisateurs de fauteuil, pour concevoir une protection qui préserve l'autonomie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 : COLLAGE 2 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="collage__duo">
+          <div class="placeholder" style="aspect-ratio:16/9;background:#dce4e8;">
+            <span>Photo : croquis d'observation — enquête terrain</span>
+          </div>
+          <div class="placeholder" style="aspect-ratio:16/9;background:#2a2a2a;">
+            <span>Photo : interview utilisateur — portrait en contexte</span>
+          </div>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder" style="aspect-ratio:200/47;background:#111;">
+          <span>Photo : test pluie en conditions réelles — panoramique</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 : COLLAGE 3 (grande image produit) -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top"></div>
+      <div class="collage__bottom">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#1a2a30;">
+          <span>Photo : prototype final monté sur fauteuil — lumière studio</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 : TEXT STICKY -->
+  <section class="component component--text-sticky">
+    <div class="sticky__container">
+      <div class="sticky__sidebar" id="stickySidebar">
+        <p>La démarche commence par l'observation : accompagner des utilisateurs de fauteuil dans leur quotidien pluvieux, noter ce qui bloque, ce qui libère, ce qui est déjà bricolé par nécessité.</p>
+        <p>Côté technique, la contrainte principale est l'intégration au fauteuil sans modification permanente — une fixation rapide, démontable en quelques secondes, compatible avec les différents modèles de fauteuil manuel.</p>
+        <p>Côté matériaux : un tissu imperméable léger (pas de caoutchouc, trop lourd), une structure rigide minimale pour tenir la forme sans gêner le champ de vision, et une zone dégagée pour les mains sur les roues.</p>
+        <p>Le résultat : un objet qui s'installe seul, en 10 secondes, et qui redonne à l'utilisateur le contrôle total de son déplacement sous la pluie.</p>
+      </div>
+      <div class="sticky__content" id="stickyContent">
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:593/835;background:#c8d4dc;">
+            <span>Photo : prototype — vue portrait sur fauteuil</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:960/479;background:#2a3a3a;">
+            <span>Schéma : système de fixation rapide — éclaté technique</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:2/1;background:#e8eef0;">
+            <span>Photo : échantillons tissus testés — comparaison</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:5/3;background:#dce4e8;">
+            <span>Schéma : vue de dessus — zone dégagée mains/roues</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:2/1;background:#1a2a30;">
+            <span>Photo : test utilisateur sous la pluie — autonomie retrouvée</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder placeholder--dark" style="aspect-ratio:2.29/1;background:#111;">
+            <span>Vidéo : démonstration montage / démontage en 10 secondes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 : COLLAGE 4 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="collage__duo">
+          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#1a2a30;">
+            <span>Photo : détail tissu imperméable — texture gros plan</span>
+          </div>
+          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#333;">
+            <span>Photo : système de fixation — rails aluminium</span>
+          </div>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0a0a0a;">
+          <span>Photo : prototype final — lumière rasante, fond sombre</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8 : COLLAGE 5 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0d1a20;">
+          <span>Photo : utilisateur en mouvement sous la pluie — ambiance urbaine</span>
+        </div>
+      </div>
+      <div class="collage__bottom"></div>
+    </div>
+  </section>
+
+  <!-- S9 : TEXTE DARK -->
+  <section class="component component--text component--text--dark">
+    <div class="text__container">
+      <div class="text__body">
+        <p>Concevoir pour la mobilité réduite, c'est concevoir pour l'autonomie. Chaque gramme superflu, chaque seconde de montage en plus, chaque centimètre de visibilité perdu compte double.</p>
+        <p>Ce projet m'a appris que le design inclusif n'est pas un cas à part — c'est la rigueur du design portée à son niveau d'exigence le plus élevé. Une contrainte humaine forte produit un objet meilleur pour tous.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S10 : IMAGE GRID PINNÉE -->
+  <section class="component component--image-grid" id="imageGrid">
+    <div class="image-grid__items">
+      <div class="grid__item pos-1" style="aspect-ratio:16/9;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a2a30;">
+          <span>Photo : prototype sur fauteuil — extérieur</span>
+        </div>
+      </div>
+      <div class="grid__item pos-2" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a2a30;">
+          <span>Photo : détail fixation — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-3" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1c2830;">
+          <span>Photo : tissu sous la pluie — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-4" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#0a1a20;">
+          <span>Photo : croquis de conception — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-5" style="aspect-ratio:2.55;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#111;">
+          <span>Photo : rue pluvieuse — ultra-wide</span>
+        </div>
+      </div>
+      <div class="grid__item pos-6" style="aspect-ratio:2.29;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a2030;">
+          <span>Schéma : vue de dessus — ultra-wide</span>
+        </div>
+      </div>
+      <div class="grid__item pos-7" style="aspect-ratio:16/9;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#0a0a0a;">
+          <span>Vidéo : montage en 10 secondes</span>
+        </div>
+      </div>
+      <div class="grid__item pos-8" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a2030;">
+          <span>Photo : test utilisateur — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-9" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#0d1520;">
+          <span>Photo : mains libres sur roues — portrait</span>
+        </div>
+      </div>
+    </div>
+    <div class="image-grid__overlay">
+      <span class="overlay__number">10</span>
+      <span class="overlay__label">secondes<br>1 geste</span>
+    </div>
+  </section>
+
+  <!-- S11 : CREDITS -->
+  <section class="component component--credits">
+    <div class="credits__container">
+      <p class="credits__label">Ce projet</p>
+      <p class="credits__names" id="creditsNames">
+        Conception & réalisation /
+        <span class="word">Alec</span>
+        <span class="word">Mignot</span>
+        /
+        <span class="credits__faded">Enquête terrain & tests utilisateurs</span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="son-footer">
+  <div class="son-footer__inner">
+    <a href="/#projets" class="son-footer__back">← Retour aux projets</a>
+    <p class="son-footer__copy">Alec Mignot — 2024</p>
+  </div>
+</footer>
+
+<SonScroll client:load />
+
+</body>
+</html>
