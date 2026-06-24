@@ -1,0 +1,283 @@
+---
+const projets = [
+  {
+    num:    '01',
+    verbe:  'RECRÉER DU LIEN',
+    titre:  'ThatsMyJam',
+    desc:   'Le public vote et agit sur le concert live — une plateforme et une entreprise.',
+    tags:   ['logiciel', 'React/TS', 'paiements'],
+    accent: '#F97316',
+    href:   '/projets/thatsmyjam',
+    preview: '/media/jam/hero.png',
+    bg:     '/media/jam/hero.png',
+    align: 'left',
+  },
+  {
+    num:    '02',
+    verbe:  'ÉVEILLER UN SENS',
+    titre:  'Le son des matières',
+    desc:   'Un synthétiseur sensoriel : chaque matériau touché a sa voix.',
+    tags:   ['objet', 'électronique', 'Arduino'],
+    accent: '#F59E0B',
+    href:   '/projets/son-des-matieres',
+    preview: '/media/preview-son.jpg',
+    bg:     '/media/preview-son.jpg',
+    align: 'right',
+  },
+  {
+    num:    '03',
+    verbe:  'RENDRE AUTONOME',
+    titre:  'Sous la pluie, libre',
+    desc:   "Protection pluie pour fauteuil roulant, née d'une enquête de terrain.",
+    tags:   ['produit', 'design'],
+    accent: '#8B5CF6',
+    href:   '/projets/sous-la-pluie',
+    preview: '/media/preview-pluie.jpg',
+    bg:     '/media/preview-pluie.jpg',
+    // layout : centré, plus petit
+    align: 'center',
+  },
+];
+---
+
+<section class="projects-dark" id="projets" aria-label="Projets">
+  <div class="projects-dark__inner">
+    {projets.map((p) => (
+      <article
+        class={`pcard pcard--${p.align} js-reveal`}
+        style={`--accent: ${p.accent}`}
+      >
+        {p.bg && (
+          <div
+            class="pcard__bg"
+            style={`background-image: url(${p.bg})`}
+            transition:name={`projet-bg-${p.href.split('/').pop()}`}
+            aria-hidden="true"
+          />
+        )}
+
+        <a href={p.href} class="pcard__link" aria-label={`${p.verbe} — ${p.titre}`}>
+
+          {/* Numéro en arrière-plan */}
+          <span class="pcard__num" aria-hidden="true">{p.num}</span>
+
+          <div class="pcard__content">
+            <p class="pcard__verbe">{p.verbe}</p>
+            <h2 class="pcard__titre" transition:name={`projet-titre-${p.href.split('/').pop()}`}>{p.titre}</h2>
+            <p class="pcard__desc">{p.desc}</p>
+            <ul class="pcard__tags" aria-label="Technologies">
+              {p.tags.map(t => <li>{t}</li>)}
+            </ul>
+            <span class="pcard__cta" aria-hidden="true">
+              Voir le projet
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* ── Section fond noir ── */
+  .projects-dark {
+    background: #09090B;
+    padding: 8rem 2rem 10rem;
+    overflow: hidden;
+  }
+
+  .projects-dark__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* ── Carte de base ── */
+  .pcard {
+    position: relative;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .pcard__bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+  }
+  .pcard:hover .pcard__bg { opacity: 0.28; }
+
+    /* Reveal animation */
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pcard.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger via nth-child */
+  .pcard:nth-child(2) { transition-delay: 0.12s; }
+  .pcard:nth-child(3) { transition-delay: 0.24s; }
+
+  /* ── Layouts non-linéaires ── */
+  .pcard--left  .pcard__link { padding-left: 0; max-width: 80%; }
+  .pcard--right .pcard__link { padding-left: 18%; max-width: 100%; }
+  .pcard--center .pcard__link {
+    padding-left: 8%;
+    max-width: 88%;
+  }
+
+  /* ── Lien ── */
+  .pcard__link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .pcard__link:hover { transform: translateY(-6px); }
+  .pcard__link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 8px;
+    border-radius: 2px;
+  }
+
+  /* ── Numéro ── */
+  .pcard__num {
+    position: absolute;
+    top: -1.5rem;
+    right: 0;
+    font-family: var(--font-heading);
+    font-size: clamp(5rem, 12vw, 10rem);
+    font-weight: 700;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  /* ── Contenu ── */
+  .pcard__content { position: relative; z-index: 1; }
+
+  .pcard__verbe {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1rem;
+    transition: color 0.3s ease, letter-spacing 0.3s ease;
+  }
+  .pcard__link:hover .pcard__verbe {
+    color: var(--accent);
+    letter-spacing: 0.18em;
+  }
+
+  .pcard__titre {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5.5vw, 5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    /* Trait d'accent sous le titre au hover */
+    background: linear-gradient(var(--accent), var(--accent)) no-repeat left bottom;
+    background-size: 0% 2px;
+    transition: background-size 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: 4px;
+  }
+  .pcard__link:hover .pcard__titre { background-size: 100% 2px; }
+
+  .pcard__desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+    max-width: 44ch;
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  .pcard__link:hover .pcard__desc { color: rgba(255,255,255,0.65); }
+
+  .pcard__tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .pcard__tags li {
+    font-size: 0.72rem;
+    padding: 3px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    color: rgba(255,255,255,0.3);
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .pcard__link:hover .pcard__tags li {
+    border-color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.6);
+  }
+
+  .pcard__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .pcard__link:hover .pcard__cta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .projects-dark { padding: 5rem 1.5rem 7rem; }
+    .pcard--left .pcard__link,
+    .pcard--right .pcard__link,
+    .pcard--center .pcard__link {
+      padding-left: 0; max-width: 100%;
+    }
+    .pcard__num { font-size: 5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pcard { opacity: 1; transform: none; transition: none; }
+    .pcard__link { transition: none; }
+    .pcard__titre { transition: none; }
+  }
+</style>
+
+<script>
+  // Reveal au scroll (IntersectionObserver)
+  const cards = document.querySelectorAll('.js-reveal');
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } }),
+    { threshold: 0.15 }
+  );
+  cards.forEach(c => io.observe(c));
+
+</script>

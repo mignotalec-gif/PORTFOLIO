@@ -1,0 +1,110 @@
+---
+import Base from './Base.astro';
+export interface Props {
+  frontmatter: {
+    titre: string;
+    verbe: string;
+    desc: string;
+    accent: string;
+    tags: string[];
+    date: string;
+    preview?: string;
+  };
+}
+const { frontmatter: f } = Astro.props;
+const slug = Astro.url.pathname.split('/').filter(Boolean).pop() ?? '';
+---
+<Base title={`${f.verbe} — ${f.titre}`} description={f.desc} ogImage={f.preview}>
+  <article class="projet-page" style={`--accent: ${f.accent}`}>
+    <header class="projet-header" transition:name={`projet-bg-${slug}`}>
+      <p class="projet-verbe">{f.verbe}</p>
+      <h1 class="projet-titre" transition:name={`projet-titre-${slug}`}>{f.titre}</h1>
+      <p class="projet-desc">{f.desc}</p>
+      <ul class="projet-tags" aria-label="Technologies">
+        {f.tags.map((t: string) => <li>{t}</li>)}
+      </ul>
+    </header>
+
+    <div class="projet-body">
+      <slot />
+    </div>
+
+    <nav class="projet-nav">
+      <a href="/projets" class="back-link">← Tous les projets</a>
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .projet-page {
+    padding: var(--space-2xl) var(--space-lg);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .projet-verbe {
+    font-size: var(--text-xs); letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: var(--space-md);
+  }
+  .projet-titre {
+    font-size: var(--text-4xl); margin-bottom: var(--space-lg);
+  }
+  .projet-desc {
+    font-size: var(--text-xl); color: var(--color-muted);
+    max-width: 55ch; line-height: 1.6; margin-bottom: var(--space-lg);
+  }
+  .projet-tags {
+    list-style: none; display: flex; gap: var(--space-sm); flex-wrap: wrap;
+    margin-bottom: var(--space-2xl);
+  }
+  .projet-tags li {
+    font-size: var(--text-xs); padding: 2px 10px;
+    border: 1px solid var(--color-border); border-radius: 999px;
+    color: var(--color-muted);
+  }
+
+  /* Typographie du contenu MDX */
+  .projet-body :global(h2) {
+    font-size: var(--text-2xl); margin: var(--space-2xl) 0 var(--space-md);
+  }
+  .projet-body :global(h3) {
+    font-size: var(--text-xl); margin: var(--space-xl) 0 var(--space-sm);
+  }
+  .projet-body :global(p) {
+    font-size: var(--text-base); line-height: 1.75; color: var(--color-muted);
+    max-width: 65ch; margin-bottom: var(--space-lg);
+  }
+  .projet-body :global(.diptyque) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin: var(--space-xl) 0;
+  }
+  .projet-body :global(.diptyque h3) {
+    font-size: var(--text-base); font-weight: 600;
+    margin-bottom: var(--space-sm);
+    padding-top: var(--space-md);
+    border-top: 2px solid var(--accent);
+  }
+  .projet-body :global(img) {
+    width: 100%; border-radius: 4px; margin: var(--space-lg) 0;
+  }
+  .projet-body :global(blockquote) {
+    font-family: var(--font-serif); font-style: italic;
+    font-size: var(--text-xl); color: var(--color-text);
+    border-left: 3px solid var(--accent);
+    padding-left: var(--space-lg); margin: var(--space-xl) 0;
+  }
+
+  .back-link {
+    display: inline-block; margin-top: var(--space-2xl);
+    font-size: var(--text-sm); color: var(--color-muted);
+    text-decoration: none; cursor: pointer;
+    transition: color var(--duration-mid);
+  }
+  .back-link:hover { color: var(--color-text); }
+
+  @media (max-width: 640px) {
+    .projet-body :global(.diptyque) { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+// Acte 1 — Hero minimaliste. Quasi-vide, beaucoup de blanc.
+---
+<section class="hero" aria-label="Introduction">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Alec Mignot</p>
+    <h1 class="hero__title">INGÉNIEUR<br/>DESIGNER</h1>
+    <p class="hero__thesis">
+      La technologie au service de l'humain.
+    </p>
+  </div>
+  <a href="#acte2" class="hero__scroll" aria-label="Voir la suite">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<style>
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: var(--space-xl) var(--space-lg);
+    padding-bottom: 28vh;
+    position: relative;
+  }
+
+  .hero__inner {
+    text-align: center;
+    max-width: 48rem;
+  }
+
+  .hero__eyebrow {
+    font-size: var(--text-sm);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero__title {
+    font-size: var(--text-hero);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero__thesis {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    color: var(--color-muted);
+    line-height: 1.55;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: var(--space-xl);
+    color: var(--color-muted);
+    animation: bob 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: color var(--duration-mid) var(--ease-out);
+  }
+  .hero__scroll:hover { color: var(--color-text); }
+
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll { animation: none; }
+  }
+</style>

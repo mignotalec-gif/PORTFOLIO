@@ -1,0 +1,61 @@
+---
+import Base from '../../layouts/Base.astro';
+const noteFiles = import.meta.glob('./*.mdx', { eager: true });
+const notes = Object.values(noteFiles) as any[];
+---
+<Base title="Écrits — Alec" description="Réflexions sur la technique, le design, le vivant.">
+  <main class="page-ecrits">
+    <header>
+      <p class="ecrits-label">Écrits</p>
+      <h1 class="ecrits-title">Concepts, réflexions, curiosités.</h1>
+      <p class="ecrits-intro">
+        Deep tech, géopolitique, sociologie, culture design.
+        Pas d'expertise revendiquée — juste une vision large que j'essaie de garder vivante.
+      </p>
+    </header>
+    {notes.length === 0 ? (
+      <p class="ecrits-empty">Bientôt — des notes à venir.</p>
+    ) : (
+      <ul class="ecrits-list">
+        {notes.map((note: any) => (
+          <li>
+            <a href={note.url} class="ecrit-link">
+              <span class="ecrit-date">{note.frontmatter.date}</span>
+              <span class="ecrit-titre">{note.frontmatter.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </main>
+</Base>
+
+<style>
+  .page-ecrits {
+    padding: var(--space-2xl) var(--space-lg);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .ecrits-label {
+    font-size: var(--text-sm); letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--color-muted);
+    margin-bottom: var(--space-lg);
+  }
+  .ecrits-title { font-size: var(--text-3xl); margin-bottom: var(--space-md); }
+  .ecrits-intro {
+    font-size: var(--text-base); color: var(--color-muted);
+    max-width: 60ch; line-height: 1.75; margin-bottom: var(--space-xl);
+  }
+  .ecrits-empty { color: var(--color-muted); font-style: italic; }
+  .ecrits-list { list-style: none; border-top: 1px solid var(--color-border); }
+  .ecrit-link {
+    display: flex; align-items: baseline; gap: var(--space-lg);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none; color: inherit; cursor: pointer;
+    transition: padding-left var(--duration-mid) var(--ease-out);
+  }
+  .ecrit-link:hover { padding-left: var(--space-sm); }
+  .ecrit-date { font-size: var(--text-sm); color: var(--color-muted); flex-shrink: 0; }
+  .ecrit-titre { font-size: var(--text-lg); }
+</style>

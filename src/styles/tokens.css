@@ -1,0 +1,90 @@
+/* ─── DESIGN TOKENS ─── */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* Palette */
+  --color-bg:        #FAFAFA;
+  --color-text:      #09090B;
+  --color-muted:     #52525B;
+  --color-border:    #E4E4E7;
+  --color-accent:    #2563EB;
+  --color-surface:   #FFFFFF;
+
+  /* Accents projet */
+  --accent-eveiller: #F59E0B; /* son des matières — ambre */
+  --accent-recreer:  #10B981; /* ThatsMyJam — vert */
+  --accent-rendre:   #8B5CF6; /* Pluie — violet */
+
+  /* Typography */
+  --font-heading: 'Archivo', sans-serif;
+  --font-body:    'Space Grotesk', sans-serif;
+  --font-serif:   'Lora', serif;   /* manifeste, thèse */
+
+  /* Scale (modular 1.25) */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.563rem;
+  --text-2xl:  1.953rem;
+  --text-3xl:  2.441rem;
+  --text-4xl:  3.052rem;
+  --text-hero: clamp(3rem, 8vw, 6rem);
+
+  /* Spacing */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  2rem;
+  --space-xl:  4rem;
+  --space-2xl: 8rem;
+
+  /* Z-index scale */
+  --z-base:    10;
+  --z-sticky:  20;
+  --z-overlay: 30;
+  --z-modal:   50;
+
+  /* Animation */
+  --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:   cubic-bezier(0.7, 0, 0.84, 0);
+  --duration-fast:   150ms;
+  --duration-mid:    300ms;
+  --duration-slow:   600ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.65;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Utility */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

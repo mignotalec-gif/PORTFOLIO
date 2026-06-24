@@ -1,0 +1,486 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base
+  title="RECRÉER DU LIEN — ThatsMyJam"
+  description="ThatsMyJam : le public vote et agit sur le concert live. Une plateforme et une entreprise."
+  ogImage="/media/jam/og.jpg"
+>
+<article class="tj">
+
+  <!-- HERO -->
+  <header class="tj-hero">
+    <img class="tj-hero__bg" src="/media/jam/hero.png"
+         alt="Un spectateur tient son téléphone face à la scène, l'appli ThatsMyJam ouverte, le groupe joue en arrière-plan"
+         loading="eager" />
+    <div class="tj-hero__overlay" aria-hidden="true"></div>
+    <div class="tj-hero__content">
+      <h1 class="tj-hero__titre">ThatsMyJam</h1>
+      <p class="tj-verbe">RECRÉER DU LIEN</p>
+      <p class="tj-hero__sous-titre">Mieux cerner son public en l'engageant</p>
+    </div>
+  </header>
+
+  <!-- LE PROBLÈME -->
+  <section class="tj-section tj-probleme js-reveal" aria-label="Le problème">
+    <p class="tj-section__label">Le problème</p>
+    <p class="tj-section__text">
+      ThatsMyJam s'adresse aux groupes et DJ d'événement — mariages, soirées —
+      dont le métier est d'ambiancer une salle. Quand un groupe se produit,
+      impliquer vraiment le public est difficile : les spectateurs subissent la
+      setlist sans pouvoir agir, et le groupe joue sans retour sur ce qui ferait
+      vibrer la salle. Deux côtés d'un même lien rompu.
+    </p>
+  </section>
+
+  <!-- DÉMARCHE — stacked paragraphs -->
+  <section class="tj-section tj-demarche" aria-label="Ma démarche">
+    <p class="tj-section__label">Ma démarche</p>
+
+    <div class="tj-demarche__stack">
+
+      <div class="tj-demarche__para js-reveal">
+        <p class="tj-demarche__body">
+          Le produit est né d'interviews de musiciens et de nombreux essais en
+          conditions réelles. Ces enquêtes ont guidé les choix : le vote comme
+          forme d'interaction, un accès simple via QR code, et les
+          informations que les musiciens voulaient vraiment voir.
+        </p>
+        <div class="tj-photo-duo">
+          <img src="/media/jam/phototest1.png" alt="Notes d'interview terrain" class="tj-media-img" loading="lazy" />
+          <img src="/media/jam/phototest2.png" alt="Photos de test terrain" class="tj-media-img" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="tj-demarche__para js-reveal">
+        <p class="tj-demarche__body">
+          Le groupe crée un événement sur thatsmyjam.net et renseigne sa setlist.
+          Via un QR code affiché sur des flyers présents sur les tables et derrière le groupe ; les spectateurs rejoignent
+          l'événement, voient toute la setlist et votent pour les morceaux qu'ils
+          veulent entendre. Le groupe suit les résultats en direct sur ordinateur
+          ou tablette, puis accède à un dashboard de statistiques après le concert,
+          et à un dashboard mensuel. L'objectif: permettre au groupe d'avoir accès à toutes les informations nécessaires pour comprendre son public.
+        </p>
+        <img
+          src="/media/jam/dashboard.png"
+          alt="Dashboard ThatsMyJam — résultats de vote en temps réel"
+          class="tj-media-img"
+          loading="lazy"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LA SOLUTION -->
+  <section class="tj-section tj-solution js-reveal" aria-label="La solution">
+    <p class="tj-section__label">La solution</p>
+    <div class="tj-demo-placeholder" role="img"
+         aria-label="À COMPLÉTER — vidéo du flux complet">
+      <span>À COMPLÉTER<br/>Vidéo démo : scan QR → vote public → réaction écran groupe<br/>
+        <code>/media/jam/demo.mp4</code>
+      </span>
+    </div>
+    <p class="tj-solution__legende">
+      Le moment où le lien se recrée : une salle qui vote ensemble,
+      un groupe qui répond en direct.
+    </p>
+  </section>
+
+  <!-- POURQUOI, À MOI -->
+  <section class="tj-section tj-pourquoi js-reveal" aria-label="Pourquoi ce projet, à moi">
+    <p class="tj-section__label">Pourquoi ce projet, à moi</p>
+    <div class="tj-pourquoi__inner">
+      <div class="tj-pourquoi__texte">
+        <p class="tj-pourquoi__body">
+          Passioné de musique depuis toujours, fils d'un musicien, ce projet est important pour moi car il me permet de répondre à une problématique réelle de musiciens et de proposer une solution réelle.
+        </p>
+        <div class="tj-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                  stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Création de la Startup ThatsmyJam avec Alann Samson et Arthur Chauvin</span>
+        </div>
+      </div>
+      <div class="tj-media-placeholder tj-media-placeholder--portrait" role="img"
+           aria-label="À COMPLÉTER — photo de l'équipe ou portrait">
+        <span>À COMPLÉTER<br/>Photo équipe / portrait<br/>
+          <code>/media/jam/equipe.jpg</code>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE J'EN AI APPRIS -->
+  <section class="tj-section tj-appris js-reveal" aria-label="Ce que j'en ai appris">
+    <p class="tj-section__label">Ce que j'en ai appris</p>
+    <p class="tj-appris__body">
+      À COMPLÉTER — Apprentissages techniques : gestion du temps réel à grande
+      échelle, intégration paiements, itérations terrain. Apprentissages humains :
+      monter et piloter une équipe, tenir un cap entre vision produit et contraintes
+      d'une vraie entreprise.
+    </p>
+  </section>
+
+  <!-- CHIFFRES -->
+  <section class="tj-section tj-stats js-reveal" aria-label="Chiffres clés">
+    <p class="tj-section__label">En chiffres</p>
+    <ul class="tj-stats__grid" role="list">
+      <li class="tj-stat">
+        <span class="tj-stat__val">—</span>
+        <span class="tj-stat__label">événements testés<br/><small>À COMPLÉTER</small></span>
+      </li>
+      <li class="tj-stat">
+        <span class="tj-stat__val">—</span>
+        <span class="tj-stat__label">votes enregistrés<br/><small>À COMPLÉTER</small></span>
+      </li>
+      <li class="tj-stat">
+        <span class="tj-stat__val">—</span>
+        <span class="tj-stat__label">groupes utilisateurs<br/><small>À COMPLÉTER</small></span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- CLÔTURE -->
+  <footer class="tj-cloture js-reveal">
+    <blockquote class="tj-cloture__phrase">
+      ThatsMyJam montre que la technologie, loin de nous éloigner,
+      peut nous rapprocher.
+    </blockquote>
+    <nav class="tj-nav" aria-label="Navigation projet">
+      <a href="/" class="tj-nav__back">← Retour au portfolio</a>
+    </nav>
+  </footer>
+
+</article>
+</Base>
+
+<style>
+  /* ── Base page ── */
+  .tj {
+    background: #09090B;
+    color: #E5E5E5;
+    overflow-x: hidden;
+  }
+
+  /* ── Reveal scroll ── */
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(48px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .js-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── HERO ── */
+  .tj-hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-2xl) var(--space-xl);
+    overflow: hidden;
+    background: #09090B;
+  }
+
+  .tj-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .tj-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(9,9,11,0.96) 0%,
+      rgba(9,9,11,0.5) 55%,
+      rgba(9,9,11,0.15) 100%
+    );
+    z-index: 1;
+  }
+
+  .tj-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .tj-hero__titre {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 9vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: var(--space-lg);
+  }
+
+  .tj-verbe {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #F97316;
+    margin-bottom: var(--space-md);
+  }
+
+  .tj-hero__sous-titre {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    color: rgba(255,255,255,0.82);
+  }
+
+  /* ── Sections communes ── */
+  .tj-section {
+    padding: 7rem var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .tj-section__label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: var(--space-xl);
+  }
+
+  .tj-section__text {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.85;
+    color: rgba(255,255,255,0.62);
+    max-width: 60ch;
+  }
+
+  /* ── Démarche stacked ── */
+  .tj-demarche__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .tj-demarche__para {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2.5rem;
+  }
+
+  .tj-demarche__body {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.85;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: var(--space-xl);
+    max-width: 65ch;
+  }
+
+  /* ── Images médias ── */
+  .tj-media-img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+    object-fit: cover;
+  }
+  .tj-photo-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .tj-photo-duo { grid-template-columns: 1fr; }
+  }
+
+  /* ── Placeholders médias ── */
+  .tj-media-placeholder {
+    width: 100%;
+    min-height: 220px;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.22);
+    padding: var(--space-lg);
+    line-height: 1.6;
+  }
+  .tj-media-placeholder code {
+    display: block;
+    margin-top: var(--space-sm);
+    font-size: 0.72rem;
+    color: rgba(249,115,22,0.55);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  .tj-media-placeholder--portrait {
+    min-height: 320px;
+    max-width: 280px;
+  }
+
+  /* ── Solution / démo ── */
+  .tj-demo-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.08);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.22);
+    padding: var(--space-lg);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+  }
+  .tj-solution__legende {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.38);
+    text-align: center;
+    max-width: 50ch;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* ── Pourquoi ── */
+  .tj-pourquoi__inner {
+    display: flex;
+    gap: var(--space-2xl);
+    align-items: flex-start;
+  }
+  .tj-pourquoi__texte { flex: 1; }
+  .tj-pourquoi__body {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.8;
+    color: rgba(255,255,255,0.62);
+    margin-bottom: var(--space-xl);
+  }
+  .tj-badge {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    background: rgba(249,115,22,0.06);
+    border: 1px solid rgba(249,115,22,0.18);
+    border-radius: 6px;
+    padding: var(--space-md) var(--space-lg);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.72);
+  }
+  .tj-badge svg { color: #F97316; flex-shrink: 0; margin-top: 2px; }
+
+  /* ── Appris ── */
+  .tj-appris__body {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.8;
+    color: rgba(255,255,255,0.52);
+    max-width: 60ch;
+    font-style: italic;
+  }
+
+  /* ── Stats ── */
+  .tj-stats__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  .tj-stat {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: var(--space-md);
+  }
+  .tj-stat__val {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+  }
+  .tj-stat__label {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.38);
+    line-height: 1.5;
+  }
+  .tj-stat__label small {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(249,115,22,0.45);
+    margin-top: 2px;
+  }
+
+  /* ── Clôture ── */
+  .tj-cloture {
+    padding: 7rem var(--space-xl) 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .tj-cloture__phrase {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.85);
+    max-width: 42ch;
+    margin-bottom: var(--space-xl);
+    border: none;
+    padding: 0;
+  }
+  .tj-nav__back {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    letter-spacing: 0.05em;
+  }
+  .tj-nav__back:hover { color: #fff; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .tj-hero { padding: var(--space-xl) var(--space-lg); min-height: 80svh; }
+    .tj-section { padding: 5rem var(--space-lg); }
+    .tj-stats__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+    .tj-pourquoi__inner { flex-direction: column; }
+    .tj-media-placeholder--portrait { max-width: 100%; min-height: 200px; }
+    .tj-cloture { padding: 5rem var(--space-lg) 4rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js-reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+</style>
+
+<script>
+  const reveals = document.querySelectorAll<HTMLElement>('.js-reveal');
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        io.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.12 }
+  );
+  reveals.forEach(el => io.observe(el));
+</script>

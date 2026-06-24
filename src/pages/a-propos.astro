@@ -1,0 +1,103 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="À propos — Alec Mignot" description="Ingénieur designer — trajectoire, double obsession technique et humaine.">
+  <main class="page-about">
+    <article class="about-content">
+
+      <header class="about-header">
+        <p class="about-label">À propos</p>
+        <h1 class="about-intro">
+          Je m'appelle Alec Mignot. En troisième année d'un double cursus
+          ingénieur et designer, j'apprends à tenir ces deux exigences à la fois :
+          la rigueur de la machine, et le souci de l'humain.
+        </h1>
+      </header>
+
+      <div class="about-body">
+
+        <!-- Photo en contexte — remplacer le placeholder -->
+        <div class="about-photo">
+          <!-- <img src="/media/alec-contexte.jpg" alt="Alec Mignot en train de travailler sur un prototype" /> -->
+          <div class="about-photo-placeholder">Photo en contexte</div>
+        </div>
+
+        <div class="about-text">
+          <p>
+            <!-- À compléter : d'où vient ma double obsession ? un moment charnière, un premier projet déclencheur. -->
+            [Trajectoire — à écrire en première personne.]
+          </p>
+          <p>
+            <!-- À compléter : ce que je cherche, le type de projets où les deux côtés sont nécessaires. -->
+            [Ce que je cherche — à écrire en première personne.]
+          </p>
+        </div>
+
+      </div>
+
+    </article>
+  </main>
+</Base>
+
+<style>
+  .page-about {
+    padding: var(--space-2xl) var(--space-lg);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .about-label {
+    font-size: var(--text-sm);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Intro : la phrase d'ouverture — grande, impactante */
+  .about-intro {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 2.8vw, 2rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--color-text);
+    max-width: 32rem;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    overflow: hidden;
+    position: sticky;
+    top: var(--space-xl);
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo-placeholder {
+    width: 100%; height: 100%;
+    background: var(--color-border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-muted); font-size: var(--text-sm);
+    min-height: 320px;
+  }
+
+  .about-text p {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  @media (max-width: 640px) {
+    .about-body { grid-template-columns: 1fr; }
+    .about-photo { position: static; aspect-ratio: 4/3; }
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+// Manifeste — vision pure, aucune présentation personnelle
+---
+<section class="manifeste" aria-label="Manifeste">
+  <div class="manifeste__inner">
+
+    <p class="manifeste__label">Mes Convictions</p>
+
+    <p class="manifeste__p1">
+      Dans un monde aussi complexe, on ne peut pas concevoir de solutions
+      pour l'humain avec un regard étroit. Élargir sa vision, c'est la condition
+      nécessaire pour créer des choses qui ont du sens.
+    </p>
+
+    <p class="manifeste__p2">
+      Dans ce contexte, le rôle de l'ingénieur-designer est crucial. Nous vivons
+      dans un monde de technologies et d'interfaces, et l'interaction entre l'humain
+      et la machine doit être pensée au mieux : depuis le requestionnement de la
+      problématique à laquelle l'objet doit répondre, jusqu'à la solution technique
+      qui le fait exister — sans jamais perdre de vue celui pour qui il est conçu.
+    </p>
+
+    {/* OPTIONNEL — activer si la transition vers le « je » manque :
+    <p class="manifeste__signature">
+      Je m'appelle Alec Mignot, et c'est dans cet esprit que je conçois.
+    </p>
+    */}
+
+  </div>
+</section>
+
+<style>
+  .manifeste__label {
+    font-size: var(--text-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-xl);
+  }
+
+  .manifeste {
+    padding: var(--space-2xl) var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background: var(--color-bg);
+  }
+
+  .manifeste__inner {
+    max-width: 40rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+  }
+
+  /* Titre + sous-titre : bloc d'impact */
+  .manifeste__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .manifeste__titre {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--color-text);
+  }
+
+  .manifeste__sous-titre {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    color: var(--color-muted);
+    line-height: 1.4;
+  }
+
+  /* P1 — phrase qui frappe, taille prominente */
+  .manifeste__p1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    line-height: 1.75;
+    color: var(--color-text);
+    max-width: 38rem;
+  }
+
+  /* P2 — développement, plus discret */
+  .manifeste__p2 {
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--color-muted);
+    max-width: 38rem;
+
+    /* Révélation légèrement retardée via animation au scroll */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.7s var(--ease-out) forwards;
+    animation-play-state: paused;
+  }
+
+  .manifeste__p2.is-visible {
+    animation-play-state: running;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .manifeste__p2 { opacity: 1; transform: none; animation: none; }
+  }
+</style>
+
+<script>
+  // Révèle p2 à l'entrée dans le viewport
+  const p2 = document.querySelector('.manifeste__p2');
+  if (p2) {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { p2.classList.add('is-visible'); obs.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    obs.observe(p2);
+  }
+</script>
