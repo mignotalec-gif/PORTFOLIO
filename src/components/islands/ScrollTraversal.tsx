@@ -23,14 +23,14 @@ const IMG_W = 200;
 const IMG_H = 133;
 
 const SOURCES = [
-  '/media/scroll-1.jpg',
-  '/media/scroll-2.jpg',
-  '/media/scroll-3.jpg',
-  '/media/scroll-4.jpg',
-  '/media/scroll-5.jpg',
-  '/media/scroll-6.jpg',
+  '/media/scroll-1.webp',
+  '/media/scroll-2.webp',
+  '/media/scroll-3.webp',
+  '/media/scroll-4.webp',
+  '/media/scroll-5.webp',
+  '/media/scroll-6.webp',
   '/media/scroll-7.webp',
-  '/media/scroll-8.jpg',
+  '/media/scroll-8.webp',
 ];
 
 interface Img {
