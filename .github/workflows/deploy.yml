@@ -29,6 +29,7 @@ jobs:
             -e 's|src="/media/|src="/PORTFOLIO/media/|g' \
             -e 's|src="/favicon|src="/PORTFOLIO/favicon|g' \
             -e 's|href="/favicon|href="/PORTFOLIO/favicon|g' \
+            -e 's|content="/media/|content="/PORTFOLIO/media/|g' \
             -e 's|href="/#|href="/PORTFOLIO/#|g' \
             -e 's|href="/projets|href="/PORTFOLIO/projets|g' \
             -e 's|href="/a-propos|href="/PORTFOLIO/a-propos|g' \
