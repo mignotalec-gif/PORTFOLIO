@@ -24,6 +24,17 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - run: |
+          find dist -name '*.html' -exec sed -i \
+            -e 's|src="/media/|src="/PORTFOLIO/media/|g' \
+            -e 's|src="/favicon|src="/PORTFOLIO/favicon|g' \
+            -e 's|href="/favicon|href="/PORTFOLIO/favicon|g' \
+            -e 's|href="/#|href="/PORTFOLIO/#|g' \
+            -e 's|href="/projets|href="/PORTFOLIO/projets|g' \
+            -e 's|href="/a-propos|href="/PORTFOLIO/a-propos|g' \
+            -e 's|href="/contact|href="/PORTFOLIO/contact|g' \
+            -e 's|href="/ecrits|href="/PORTFOLIO/ecrits|g' \
+            {} +
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
