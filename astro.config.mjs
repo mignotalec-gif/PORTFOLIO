@@ -4,6 +4,8 @@ import react from '@astrojs/react';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
+  site: 'https://mignotalec-gif.github.io',
+  base: '/PORTFOLIO/',
   integrations: [react(), mdx()],
   output: 'static',
 });

@@ -2,12 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import ScrollTraversal from '../components/islands/ScrollTraversal';
+import Bio from '../components/Bio.astro';
 import ProjectList from '../components/ProjectList.astro';
 ---
 <Base>
   <main>
     <Hero />
     <ScrollTraversal client:load />
+    <Bio />
     <ProjectList />
   </main>
 </Base>

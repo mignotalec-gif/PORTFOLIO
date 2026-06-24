@@ -15,27 +15,14 @@ const projets = [
   {
     num:    '02',
     verbe:  'ÉVEILLER UN SENS',
-    titre:  'Le son des matières',
+    titre:  'Synthé MyKey',
     desc:   'Un synthétiseur sensoriel : chaque matériau touché a sa voix.',
     tags:   ['objet', 'électronique', 'Arduino'],
     accent: '#F59E0B',
     href:   '/projets/son-des-matieres',
-    preview: '/media/preview-son.jpg',
-    bg:     '/media/preview-son.jpg',
+    preview: '/media/MYKEY/ombrefini.png',
+    bg:     '/media/MYKEY/ombrefini.png',
     align: 'right',
-  },
-  {
-    num:    '03',
-    verbe:  'RENDRE AUTONOME',
-    titre:  'Sous la pluie, libre',
-    desc:   "Protection pluie pour fauteuil roulant, née d'une enquête de terrain.",
-    tags:   ['produit', 'design'],
-    accent: '#8B5CF6',
-    href:   '/projets/sous-la-pluie',
-    preview: '/media/preview-pluie.jpg',
-    bg:     '/media/preview-pluie.jpg',
-    // layout : centré, plus petit
-    align: 'center',
   },
 ];
 ---
@@ -58,16 +45,12 @@ const projets = [
 
         <a href={p.href} class="pcard__link" aria-label={`${p.verbe} — ${p.titre}`}>
 
-          {/* Numéro en arrière-plan */}
-          <span class="pcard__num" aria-hidden="true">{p.num}</span>
 
           <div class="pcard__content">
             <p class="pcard__verbe">{p.verbe}</p>
             <h2 class="pcard__titre" transition:name={`projet-titre-${p.href.split('/').pop()}`}>{p.titre}</h2>
             <p class="pcard__desc">{p.desc}</p>
-            <ul class="pcard__tags" aria-label="Technologies">
-              {p.tags.map(t => <li>{t}</li>)}
-            </ul>
+
             <span class="pcard__cta" aria-hidden="true">
               Voir le projet
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -81,6 +64,9 @@ const projets = [
       </article>
     ))}
   </div>
+
+  </div>
+
 </section>
 
 <style>

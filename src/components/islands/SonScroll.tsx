@@ -16,39 +16,17 @@ export default function SonScroll() {
     gsap.ticker.add(lenisRaf);
     gsap.ticker.lagSmoothing(0);
 
-    // ── Curseur custom (toujours actif) ─────────────────
-    const dot = document.getElementById('cursorDot');
-    let tickCursor: (() => void) | null = null;
-    let onMove: ((e: MouseEvent) => void) | null = null;
-    const ac = new AbortController();
-
-    if (dot) {
-      let mx = 0, my = 0, cx = 0, cy = 0;
-      onMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; };
-      document.addEventListener('mousemove', onMove);
-      tickCursor = () => {
-        cx += (mx - cx) * 0.12;
-        cy += (my - cy) * 0.12;
-        gsap.set(dot, { x: cx, y: cy });
-      };
-      gsap.ticker.add(tickCursor);
-      const hoverEls = document.querySelectorAll('a, button, .--magnet');
-      hoverEls.forEach(el => {
-        el.addEventListener('mouseenter', () => dot.classList.add('hovering'), { signal: ac.signal });
-        el.addEventListener('mouseleave', () => dot.classList.remove('hovering'), { signal: ac.signal });
-      });
-    }
+    // Resync après un refresh (restauration position de scroll navigateur)
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
 
     const cleanup = () => {
       lenis.destroy();
       gsap.ticker.remove(lenisRaf);
-      if (tickCursor) gsap.ticker.remove(tickCursor);
-      if (onMove) document.removeEventListener('mousemove', onMove);
-      ac.abort();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
 
-    // Sortie anticipée si reduced motion (curseur reste actif)
     if (prefersReduced) {
       return cleanup;
     }
@@ -67,7 +45,42 @@ export default function SonScroll() {
       });
     }
 
-    // ── 1. Hero title — lignes montent du bas ────────────
+    // ── 1. Hero pin + image reveal + text inversion ──────
+    const heroSection = document.getElementById('heroSection');
+    const heroImage = document.getElementById('heroImage');
+    if (heroSection && heroImage) {
+      ScrollTrigger.create({
+        trigger: heroImage,
+        start: 'top bottom',
+        end: 'top top',
+        pin: heroSection,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+      });
+      // Après le pin, le texte suit l'image à vitesse de scroll
+      ScrollTrigger.create({
+        trigger: heroImage,
+        start: 'top top',
+        end: 'bottom top',
+        animation: gsap.to(heroSection, {
+          y: () => -(window.innerHeight),
+          ease: 'none',
+        }),
+        scrub: true,
+        invalidateOnRefresh: true,
+      });
+      ScrollTrigger.create({
+        trigger: heroImage,
+        start: 'top 85%',
+        end: 'bottom top',
+        onEnter: () => heroSection.classList.add('hero--light'),
+        onLeaveBack: () => heroSection.classList.remove('hero--light'),
+        onLeave: () => heroSection.classList.remove('hero--light'),
+        onEnterBack: () => heroSection.classList.add('hero--light'),
+      });
+    }
+
+    // ── 2. Hero title — lignes montent du bas ────────────
     const heroTitleInners = document.querySelectorAll<HTMLElement>('#heroTitle .word__inner');
     if (heroTitleInners.length) {
       gsap.from(heroTitleInners, {
@@ -79,7 +92,7 @@ export default function SonScroll() {
       });
     }
 
-    // ── 2. Hero meta spans ────────────────────────────────
+    // ── 3. Hero meta spans (legacy — peut être absent) ────
     const metaSpans = document.querySelectorAll<HTMLElement>('#heroMeta span');
     if (metaSpans.length) {
       gsap.from(metaSpans, {
@@ -92,7 +105,7 @@ export default function SonScroll() {
       });
     }
 
-    // ── 3. Hero description ───────────────────────────────
+    // ── 4. Hero description ───────────────────────────────
     const heroDesc = document.getElementById('heroDesc');
     if (heroDesc) {
       gsap.from(heroDesc, {
@@ -104,7 +117,7 @@ export default function SonScroll() {
       });
     }
 
-    // ── 4. Work-info colonnes ─────────────────────────────
+    // ── 5. Work-info colonnes (legacy — peut être absent) ──
     const workCols = document.querySelectorAll<HTMLElement>('.work-info__col');
     if (workCols.length) {
       gsap.from(workCols, {
@@ -159,47 +172,6 @@ export default function SonScroll() {
       });
     });
 
-    // ── 8. Image grid — pin + fadeIn + overlay parallax ──
-    const imageGrid = document.getElementById('imageGrid');
-    if (imageGrid) {
-      const pinDuration = () => window.innerHeight * 2.5;
-
-      ScrollTrigger.create({
-        trigger: imageGrid,
-        start: 'top top',
-        end: () => `+=${pinDuration()}`,
-        pin: true,
-        anticipatePin: 1,
-      });
-
-      imageGrid.querySelectorAll<HTMLElement>('.grid__item').forEach(item => {
-        gsap.from(item, {
-          opacity: 0,
-          scale: 0.95,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: imageGrid,
-            start: 'top top',
-            end: () => `+=${pinDuration()}`,
-            scrub: 1,
-          },
-        });
-      });
-
-      const overlay = imageGrid.querySelector<HTMLElement>('.image-grid__overlay');
-      if (overlay) {
-        gsap.to(overlay, {
-          y: -80,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: imageGrid,
-            start: 'top top',
-            end: () => `+=${pinDuration()}`,
-            scrub: 1.5,
-          },
-        });
-      }
-    }
 
     // ── 9. Credits — per-word stagger ────────────────────
     const creditsWords = document.querySelectorAll<HTMLElement>('#creditsNames .word');

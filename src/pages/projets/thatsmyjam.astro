@@ -9,15 +9,13 @@ import SonScroll from '../../components/islands/SonScroll.tsx';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ThatsMyJam — Alec Mignot</title>
-  <meta name="description" content="Une plateforme qui recrée le lien entre le public et les artistes — en temps réel." />
+  <meta name="description" content="Rétablir le lien entre l'artiste et son public en temps réel." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body>
-
-<div class="cursor__dot" id="cursorDot"></div>
 
 <header class="son-header" id="sonHeader">
   <div class="son-header__inner">
@@ -30,7 +28,7 @@ import SonScroll from '../../components/islands/SonScroll.tsx';
 <main>
 
   <!-- S1 : HERO -->
-  <section class="component hero-single-work">
+  <section class="component hero-single-work" id="heroSection">
     <div class="hero__container">
       <div class="hero__text-group">
         <h1 class="hero__title" id="heroTitle">
@@ -38,241 +36,109 @@ import SonScroll from '../../components/islands/SonScroll.tsx';
           <span class="word"><span class="word__inner">My</span></span><br>
           <span class="word"><span class="word__inner">Jam</span></span>
         </h1>
-        <div class="hero__meta" id="heroMeta">
-          <span>2023–2024</span>
-          <span>Startup SaaS</span>
-          <span>Live Music</span>
-          <span>Product Design</span>
-        </div>
-        <div class="hero__description" id="heroDesc">
-          <p>Recréer le lien entre le public et les artistes — en temps réel.</p>
+        <div class="hero__description" id="heroDesc" style="text-align:right;margin-left:auto;max-width:420px;">
+          <p>Rétablir le lien entre l'artiste et son public en temps réel.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORK-INFO BAR -->
-  <div class="work-info" id="workInfo">
-    <div class="work-info__inner">
-      <div class="work-info__col">
-        <span class="work-info__label">type</span>
-        <span class="work-info__value">Startup SaaS</span>
-      </div>
-      <div class="work-info__col">
-        <span class="work-info__label">secteur</span>
-        <span class="work-info__value">Live Music</span>
-      </div>
-      <div class="work-info__col">
-        <span class="work-info__label">outils</span>
-        <span class="work-info__value">Web, QR Code, Vote</span>
-      </div>
-      <div class="work-info__col">
-        <span class="work-info__label">équipe</span>
-        <span class="work-info__value">3 fondateurs</span>
-      </div>
-      <div class="work-info__col">
-        <span class="work-info__label">année</span>
-        <span class="work-info__value">2023–2024</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- S2 : COLLAGE 1 (reverse) -->
-  <section class="component component--collage">
+  <!-- S2 : FULL IMAGE (monte derrière le hero au scroll) -->
+  <section class="component component--collage" id="heroImage">
     <div class="collage__wrap collage__wrap--reverse">
       <div class="collage__top">
         <img src="/media/jam/hero.png"
              alt="Un spectateur tient son téléphone face à la scène, l'appli ThatsMyJam ouverte"
              style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" />
       </div>
-      <div class="collage__bottom">
-        <div class="placeholder" style="aspect-ratio:200/47;background:#0a0a0a;">
-          <span>Photo : ambiance concert — panoramique scène et public</span>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- S3 : TEXTE INTRO -->
   <section class="component component--text">
     <div class="text__container">
       <div class="text__body">
-        <p>ThatsMyJam s'adresse aux groupes et DJ d'événement — mariages, soirées — dont le métier est d'ambiancer une salle. Quand un groupe se produit, impliquer vraiment le public est difficile : les spectateurs subissent la setlist sans pouvoir agir, et le groupe joue sans retour sur ce qui ferait vibrer la salle. Deux côtés d'un même lien rompu.</p>
+        <p><strong>1. Le constat initial : Le mur invisible</strong></p>
+        <p>L'idée est née d'une <strong>observation très personnelle</strong> : mon père est musicien et joue régulièrement dans des bars et restaurants. En allant le voir, j'ai souvent constaté la difficulté d'engager un <strong>public attablé</strong> et de créer une véritable ambiance. Le groupe joue, les spectateurs écoutent, mais une <strong>barrière invisible</strong> sépare la scène de la salle. L'interaction manquait cruellement.</p>
+        <p>Comment transformer un <strong>public passif en acteur</strong> de la soirée ?</p>
       </div>
     </div>
   </section>
 
-  <!-- S4 : COLLAGE 2 -->
-  <section class="component component--collage">
-    <div class="collage__wrap">
-      <div class="collage__top">
-        <div class="collage__duo">
+  <!-- S3 : STICKY TEXTE + IMAGES — 2. Conception sur le terrain -->
+  <section class="component component--text-sticky">
+    <div class="sticky__container">
+      <div class="sticky__sidebar" id="stickySidebar1">
+        <p><strong>2. Conception sur le terrain</strong></p>
+        <p>Pour répondre à ce problème, j'ai directement <strong>intégré les musiciens au processus de conception</strong>. Nous avons itéré avec mon père et son groupe lors de plusieurs concerts pour cerner leurs besoins réels.</p>
+        <p>L'enjeu de design était <strong>double et asymétrique</strong> : il fallait une interface d'une <strong>simplicité absolue</strong> pour le spectateur — zéro friction — et un <strong>tableau de bord complet mais non distrayant</strong> pour le groupe sur scène.</p>
+        <p>L'accroche trouvée : poser des <strong>flyers sur les tables avec un QR code</strong> et une question simple — <em>« On joue quoi ? »</em></p>
+      </div>
+      <div class="sticky__content" id="stickyContent1">
+        <div class="sticky__item --magnet">
           <img src="/media/jam/phototest1.png"
                alt="Notes d'interview terrain"
-               style="flex:1;aspect-ratio:16/9;object-fit:cover;display:block;" />
-          <img src="/media/jam/phototest2.png"
-               alt="Photos de test terrain"
-               style="flex:1;aspect-ratio:16/9;object-fit:cover;display:block;" />
-        </div>
-      </div>
-      <div class="collage__bottom">
-        <div class="placeholder" style="aspect-ratio:200/47;background:#1a1a1a;">
-          <span>Photo : QR code affiché sur table de soirée — panoramique</span>
+               style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- S5 : COLLAGE 3 (dashboard full-width) -->
+  <!-- S4 : FULL IMAGE → TEXTE — 3. L'implémentation -->
   <section class="component component--collage">
     <div class="collage__wrap">
       <div class="collage__top"></div>
       <div class="collage__bottom">
-        <img src="/media/jam/dashboard.png"
-             alt="Dashboard ThatsMyJam — résultats de vote en temps réel"
+        <img src="/media/jam/mockup.png"
+             alt="Mockup ThatsMyJam — interface desktop et mobile"
              style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;" />
       </div>
     </div>
   </section>
 
-  <!-- S6 : TEXT STICKY -->
+  <section class="component component--text">
+    <div class="text__container">
+      <div class="text__body">
+        <p><strong>3. L'implémentation et l'ingénierie</strong></p>
+        <p>Pour concrétiser cette expérience, j'ai co-géré avec Alann toute <strong>l'architecture technique</strong>, laissant la création de l'interface visuelle à Arthur.</p>
+        <p>Le défi d'ingénierie principal : <strong>le temps réel</strong>. Il fallait s'assurer que les votes s'affichent instantanément pour le groupe, sans surcharger le système. Base de données temps réel <strong>Supabase</strong>, backend <strong>Node.js</strong> sur <strong>Railway</strong>, front-end <strong>React</strong> déployé sur <strong>Vercel</strong>.</p>
+        <p>Un système de <strong>paiement fluide</strong> a été intégré pour permettre au public de laisser des pourboires dématérialisés en un clic.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 : STICKY TEXTE + IMAGES — 4. La confrontation au réel -->
   <section class="component component--text-sticky">
     <div class="sticky__container">
-      <div class="sticky__sidebar" id="stickySidebar">
-        <p>Le produit est né d'interviews de musiciens et de nombreux essais en conditions réelles. Ces enquêtes ont guidé les choix : le vote comme forme d'interaction, un accès simple via QR code.</p>
-        <p>Le groupe crée un événement sur thatsmyjam.net et renseigne sa setlist. Via un QR code affiché sur des flyers, les spectateurs rejoignent l'événement, voient toute la setlist et votent pour les morceaux qu'ils veulent entendre.</p>
-        <p>Le groupe suit les résultats en direct sur ordinateur ou tablette, puis accède à un dashboard de statistiques après le concert. L'objectif : permettre au groupe d'avoir accès à toutes les informations nécessaires pour comprendre son public.</p>
-        <p>Passionné de musique depuis toujours, fils d'un musicien — ce projet est né d'une problématique réelle, et répond à une vraie demande terrain.</p>
+      <div class="sticky__sidebar" id="stickySidebar2">
+        <p><strong>4. La confrontation au réel : La magie opère</strong></p>
+        <p>Le véritable <strong>crash-test</strong> a eu lieu sur une terrasse de restaurant. Résultats immédiats : sur <strong>25 tables, 22 votants</strong>, une cinquantaine de votes et des premiers pourboires dès le premier essai. L'interface a été comprise <strong>instantanément, sans aucune explication</strong>.</p>
+        <p>Mais la vraie réussite n'était pas dans ces chiffres. Elle était <strong>humaine</strong>.</p>
+        <p>Nous avons vu une <strong>personne de 60 ans</strong> voter pour un titre, et se lever pour venir chanter avec le groupe. Une famille a voté, et dès les premières notes, leur petite fille s'est exclamée : <em>« C'est moi qui ai voté, c'est ma musique ! »</em> avant de se précipiter devant la scène pour danser.</p>
+        <p>C'est pour provoquer ce genre de moments que j'ai conçu ThatsMyJam. <strong>La technique et le code s'effacent pour laisser place au lien social.</strong></p>
       </div>
-      <div class="sticky__content" id="stickyContent">
+      <div class="sticky__content" id="stickyContent2">
         <div class="sticky__item --magnet">
-          <img src="/media/jam/artiste.png"
-               alt="Artiste en performance"
-               style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;" />
-        </div>
-        <div class="sticky__item --magnet">
-          <div class="placeholder" style="aspect-ratio:16/9;background:#111;">
-            <span>Vidéo : scan QR → vote public → réaction écran groupe</span>
-          </div>
-        </div>
-        <div class="sticky__item --magnet">
-          <div class="placeholder" style="aspect-ratio:2/1;background:#f0ece6;">
-            <span>Photo : interface vote — écran spectateur</span>
-          </div>
-        </div>
-        <div class="sticky__item --magnet">
-          <div class="placeholder" style="aspect-ratio:5/3;background:#e0e0e0;">
-            <span>Capture : dashboard en direct — stats concert</span>
-          </div>
-        </div>
-        <div class="sticky__item --magnet">
-          <div class="placeholder" style="aspect-ratio:2/1;background:#1a1a1a;">
-            <span>Photo : groupe sur scène, tablette dashboard visible</span>
-          </div>
-        </div>
-        <div class="sticky__item --magnet">
-          <div class="placeholder placeholder--dark" style="aspect-ratio:2.29/1;background:#111;">
-            <span>Capture : dashboard mensuel — statistiques agrégées</span>
-          </div>
+          <img src="/media/jam/phototest2.png"
+               alt="Photos de test terrain"
+               style="width:100%;aspect-ratio:4/5;object-fit:cover;display:block;" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- S7 : COLLAGE 4 -->
-  <section class="component component--collage">
-    <div class="collage__wrap">
-      <div class="collage__top">
-        <div class="collage__duo">
-          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#111;">
-            <span>Photo : flyer QR code sur table de mariage</span>
-          </div>
-          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#1a1a1a;">
-            <span>Capture : page setlist vote mobile</span>
-          </div>
-        </div>
-      </div>
-      <div class="collage__bottom">
-        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0a0a0a;">
-          <span>Photo : public qui vote pendant le concert</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- S8 : COLLAGE 5 -->
-  <section class="component component--collage">
-    <div class="collage__wrap">
-      <div class="collage__top">
-        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0d0d0d;">
-          <span>Photo : Alann, Arthur et Alec — l'équipe fondatrice</span>
-        </div>
-      </div>
-      <div class="collage__bottom"></div>
-    </div>
-  </section>
-
-  <!-- S9 : TEXTE DARK -->
+  <!-- S6 : OUTRO -->
   <section class="component component--text component--text--dark">
     <div class="text__container">
       <div class="text__body">
-        <p>ThatsMyJam montre que la technologie, loin de nous éloigner, peut nous rapprocher. Une salle qui vote ensemble, un groupe qui répond en direct.</p>
-        <p>Ce projet m'a appris à mener des enquêtes terrain, à itérer sur un produit réel avec de vrais utilisateurs, et à tenir un cap entre vision produit et contraintes d'une vraie entreprise avec une équipe.</p>
+        <p>ThatsMyJam est une plateforme web qui permet au public d'un concert d'<strong>interagir avec la setlist du groupe en direct</strong>. Une technologie invisible pour laisser toute la place à la musique et à l'humain.</p>
+        <p><strong>Mon rôle :</strong> Idéation, Recherche Utilisateur, Architecture & Développement (Front / Back / Base de données)</p>
+        <p><strong>Équipe :</strong> Alann Samson — Co-développement / Architecture &nbsp;·&nbsp; Arthur Chauvin — Design UI visuel</p>
+        <p><strong>Stack technique :</strong> React &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; Supabase &nbsp;·&nbsp; Vercel &nbsp;·&nbsp; Railway &nbsp;·&nbsp; Paiement intégré</p>
       </div>
     </div>
   </section>
 
-  <!-- S10 : IMAGE GRID PINNÉE -->
-  <section class="component component--image-grid" id="imageGrid">
-    <div class="image-grid__items">
-      <div class="grid__item pos-1" style="aspect-ratio:16/9;">
-        <img src="/media/jam/hero.png" alt="Concert ThatsMyJam"
-             style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <div class="grid__item pos-2" style="aspect-ratio:0.924;">
-        <img src="/media/jam/artiste.png" alt="Artiste en performance"
-             style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <div class="grid__item pos-3" style="aspect-ratio:0.924;">
-        <div class="placeholder placeholder--dark" style="height:100%;background:#1a1a1a;">
-          <span>Photo : spectateur vote</span>
-        </div>
-      </div>
-      <div class="grid__item pos-4" style="aspect-ratio:0.924;">
-        <img src="/media/jam/phototest1.png" alt="Test terrain"
-             style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <div class="grid__item pos-5" style="aspect-ratio:2.55;">
-        <img src="/media/jam/dashboard.png" alt="Dashboard vote live"
-             style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <div class="grid__item pos-6" style="aspect-ratio:2.29;">
-        <div class="placeholder placeholder--dark" style="height:100%;background:#1a0000;">
-          <span>Capture : statistiques mensuelles</span>
-        </div>
-      </div>
-      <div class="grid__item pos-7" style="aspect-ratio:16/9;">
-        <img src="/media/jam/phototest2.png" alt="Test utilisateur terrain"
-             style="width:100%;height:100%;object-fit:cover;display:block;" />
-      </div>
-      <div class="grid__item pos-8" style="aspect-ratio:0.924;">
-        <div class="placeholder placeholder--dark" style="height:100%;background:#1a1a2e;">
-          <span>Photo : groupe reçoit les votes</span>
-        </div>
-      </div>
-      <div class="grid__item pos-9" style="aspect-ratio:0.924;">
-        <div class="placeholder placeholder--dark" style="height:100%;background:#0a1a0a;">
-          <span>Photo : soirée mariage — QR sur table</span>
-        </div>
-      </div>
-    </div>
-    <div class="image-grid__overlay">
-      <span class="overlay__number">1</span>
-      <span class="overlay__label">appli<br>3 fondateurs</span>
-    </div>
-  </section>
-
-  <!-- S11 : CREDITS -->
+  <!-- S7 : CREDITS -->
   <section class="component component--credits">
     <div class="credits__container">
       <p class="credits__label">Ce projet</p>
@@ -296,7 +162,7 @@ import SonScroll from '../../components/islands/SonScroll.tsx';
 <footer class="son-footer">
   <div class="son-footer__inner">
     <a href="/#projets" class="son-footer__back">← Retour aux projets</a>
-    <p class="son-footer__copy">Alec Mignot — 2024</p>
+
   </div>
 </footer>
 
