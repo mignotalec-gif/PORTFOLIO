@@ -101,8 +101,8 @@ export default function ScrollTraversal() {
         s.p = 0;
         s.manifestStart = 0;
       } else if (s.p < 1) {
-        // Auto-avance lente (~16s pour compléter à 60fps)
-        s.p = Math.min(1, s.p + 0.001);
+        // Auto-avance (~5s pour compléter à 60fps)
+        s.p = Math.min(1, s.p + 0.003);
         // Le scroll prend le dessus s'il est plus loin
         if (domP > s.p) s.p = domP;
       }
@@ -220,7 +220,7 @@ export default function ScrollTraversal() {
       <style>{`
         .traversal-section {
           position: relative;
-          height: 300vh;
+          height: 500vh;
         }
 
         .traversal-bg {
