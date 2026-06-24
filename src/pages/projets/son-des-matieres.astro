@@ -1,0 +1,306 @@
+---
+import '../../styles/son-des-matieres.css';
+import SonScroll from '../../components/islands/SonScroll.tsx';
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le son des matières — Alec Mignot</title>
+  <meta name="description" content="Un synthétiseur sensoriel — chaque matériau touché a sa voix." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+
+<div class="cursor__dot" id="cursorDot"></div>
+
+<header class="son-header" id="sonHeader">
+  <div class="son-header__inner">
+    <a href="/#projets" class="son-header__back">← Tous les projets</a>
+    <span class="son-header__title">Le son des matières</span>
+    <span class="son-header__dot"></span>
+  </div>
+</header>
+
+<main>
+
+  <!-- S1 : HERO -->
+  <section class="component hero-single-work">
+    <div class="hero__container">
+      <div class="hero__text-group">
+        <h1 class="hero__title" id="heroTitle">
+          <span class="word"><span class="word__inner">Le son</span></span><br>
+          <span class="word"><span class="word__inner">des</span></span><br>
+          <span class="word"><span class="word__inner">matières</span></span>
+        </h1>
+        <div class="hero__meta" id="heroMeta">
+          <span>2023</span>
+          <span>Objet électronique</span>
+          <span>Synthèse sonore</span>
+          <span>Design sensoriel</span>
+        </div>
+        <div class="hero__description" id="heroDesc">
+          <p>Un synthétiseur sensoriel — chaque matériau touché a sa voix.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK-INFO BAR -->
+  <div class="work-info" id="workInfo">
+    <div class="work-info__inner">
+      <div class="work-info__col">
+        <span class="work-info__label">type</span>
+        <span class="work-info__value">Objet interactif</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">matériaux</span>
+        <span class="work-info__value">Bois, métal, tissu</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">outils</span>
+        <span class="work-info__value">Arduino, Max/MSP</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">capteurs</span>
+        <span class="work-info__value">Capacitifs</span>
+      </div>
+      <div class="work-info__col">
+        <span class="work-info__label">année</span>
+        <span class="work-info__value">2023</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 : COLLAGE 1 (reverse) -->
+  <section class="component component--collage">
+    <div class="collage__wrap collage__wrap--reverse">
+      <div class="collage__top">
+        <div class="placeholder" style="aspect-ratio:16/9;background:#1a1a1a;">
+          <span>Photo : vue d'ensemble du prototype sur table de bois</span>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder" style="aspect-ratio:200/47;background:#c8c0b4;">
+          <span>Photo : détail surface textile — panoramique</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 : TEXTE INTRO -->
+  <section class="component component--text">
+    <div class="text__container">
+      <div class="text__body">
+        <p>En 2023, partant du constat que les matériaux ont une présence silencieuse, j'ai voulu leur donner une voix. Le son des matières est un synthétiseur sensoriel : chaque surface — bois brut, métal brossé, tissu tendu — déclenche, par simple contact, une fréquence qui lui ressemble. Le projet questionne la frontière entre l'objet quotidien et l'instrument de musique.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 : COLLAGE 2 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="collage__duo">
+          <div class="placeholder" style="aspect-ratio:16/9;background:#e8e0d4;">
+            <span>Photo : capteur capacitif sur bois — gros plan</span>
+          </div>
+          <div class="placeholder" style="aspect-ratio:16/9;background:#2a2a2a;">
+            <span>Photo : circuit Arduino — filaments cuivre sur fond sombre</span>
+          </div>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder" style="aspect-ratio:200/47;background:#111;">
+          <span>Photo : spectre sonore visualisé — panoramique sombre</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 : COLLAGE 3 (vidéo full-width) -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top"></div>
+      <div class="collage__bottom">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0a0a0a;">
+          <span>Vidéo : démonstration — main effleurant les surfaces, sons en réponse</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 : TEXT STICKY -->
+  <section class="component component--text-sticky">
+    <div class="sticky__container">
+      <div class="sticky__sidebar" id="stickySidebar">
+        <p>L'approche créative repose sur l'idée que chaque matériau a une identité sonore qui lui est propre — rugosité, résonance, température perçue.</p>
+        <p>La première contrainte était technique : les capteurs capacitifs doivent détecter un contact sans pression mécanique. L'Arduino lit les variations de charge électrique induites par la peau humaine, traduites ensuite en paramètres sonores dans Max/MSP.</p>
+        <p>La deuxième contrainte était sensorielle : le mapping son-matière ne devait pas être arbitraire. Le bois donne des fréquences graves et chaudes. Le métal, des harmoniques cristallines. Le tissu, des textures bruitées et douces.</p>
+        <p>Le résultat est un objet qui joue au croisement de la lutherie et de l'électronique — un instrument qu'on n'apprend pas, qu'on explore.</p>
+      </div>
+      <div class="sticky__content" id="stickyContent">
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:593/835;background:#f0ece6;">
+            <span>Photo : prototype — portrait format, fond clair</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:960/479;background:#2a2a2a;">
+            <span>Schéma : diagramme des capteurs et connexions Arduino</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:2/1;background:#f5f0ea;">
+            <span>Photo : les 6 matériaux côte à côte</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:5/3;background:#e0e0e0;">
+            <span>Schéma : patch Max/MSP — routage signal</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder" style="aspect-ratio:2/1;background:#1a0a08;">
+            <span>Photo : test utilisateur — main sur objet, ambiance lumière basse</span>
+          </div>
+        </div>
+        <div class="sticky__item --magnet">
+          <div class="placeholder placeholder--dark" style="aspect-ratio:2.29/1;background:#111;">
+            <span>Vidéo : performance live — 3 matériaux joués simultanément</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 : COLLAGE 4 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="collage__duo">
+          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#111;">
+            <span>Photo : détail métal brossé — reflets dramatiques</span>
+          </div>
+          <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#333;">
+            <span>Photo : fil de cuivre sur circuit imprimé</span>
+          </div>
+        </div>
+      </div>
+      <div class="collage__bottom">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0a0a0a;">
+          <span>Photo : objet final posé sur table — lumière rasante</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8 : COLLAGE 5 -->
+  <section class="component component--collage">
+    <div class="collage__wrap">
+      <div class="collage__top">
+        <div class="placeholder placeholder--dark" style="aspect-ratio:16/9;background:#0d0d0d;">
+          <span>Photo : vue d'ambiance — objet dans son contexte d'usage</span>
+        </div>
+      </div>
+      <div class="collage__bottom"></div>
+    </div>
+  </section>
+
+  <!-- S9 : TEXTE DARK -->
+  <section class="component component--text component--text--dark">
+    <div class="text__container">
+      <div class="text__body">
+        <p>Six matériaux. Six voix. Un seul objet à la croisée de la lutherie et de l'électronique embarquée.</p>
+        <p>Le son des matières interroge notre rapport au quotidien : quand la table de travail devient instrument, quand le tissu de sa veste devient mélodie, l'environnement change de nature. Ce projet m'a appris que le design n'est pas que visuel — il est aussi auditif, tactile, sensoriel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- S10 : IMAGE GRID PINNÉE -->
+  <section class="component component--image-grid" id="imageGrid">
+    <div class="image-grid__items">
+      <div class="grid__item pos-1" style="aspect-ratio:16/9;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#111;">
+          <span>Photo : surface bois — gros plan texture</span>
+        </div>
+      </div>
+      <div class="grid__item pos-2" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a1a1a;">
+          <span>Photo : capteur sur métal — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-3" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1c0808;">
+          <span>Photo : tissu rouge — portrait</span>
+        </div>
+      </div>
+      <div class="grid__item pos-4" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#0a1a0a;">
+          <span>Photo : LED verte sur circuit</span>
+        </div>
+      </div>
+      <div class="grid__item pos-5" style="aspect-ratio:2.55;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#111;">
+          <span>Vidéo : oscilloscope — onde sonore ultra-wide</span>
+        </div>
+      </div>
+      <div class="grid__item pos-6" style="aspect-ratio:2.29;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a0000;">
+          <span>Vidéo : spectre audio — rouge/orange</span>
+        </div>
+      </div>
+      <div class="grid__item pos-7" style="aspect-ratio:16/9;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#0a0a0a;">
+          <span>Vidéo : main sur surface — contact lent</span>
+        </div>
+      </div>
+      <div class="grid__item pos-8" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#1a1a2e;">
+          <span>Photo : objet — lumière bleue froide</span>
+        </div>
+      </div>
+      <div class="grid__item pos-9" style="aspect-ratio:0.924;">
+        <div class="placeholder placeholder--dark" style="height:100%;background:#3d0a1a;">
+          <span>Photo : tissu violet — grain textile gros plan</span>
+        </div>
+      </div>
+    </div>
+    <div class="image-grid__overlay">
+      <span class="overlay__number">6</span>
+      <span class="overlay__label">matières<br>1 voix</span>
+    </div>
+  </section>
+
+  <!-- S11 : CREDITS -->
+  <section class="component component--credits">
+    <div class="credits__container">
+      <p class="credits__label">Ce projet</p>
+      <p class="credits__names" id="creditsNames">
+        Conception & réalisation /
+        <span class="word">Alec</span>
+        <span class="word">Mignot</span>
+        /
+        <span class="credits__faded">Encadrement pédagogique</span>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="son-footer">
+  <div class="son-footer__inner">
+    <a href="/#projets" class="son-footer__back">← Retour aux projets</a>
+    <p class="son-footer__copy">Alec Mignot — 2023</p>
+  </div>
+</footer>
+
+<SonScroll client:load />
+
+</body>
+</html>
