@@ -91,12 +91,23 @@ export default function ScrollTraversal() {
       const s = state.current;
       s.t = ts;
 
-      // Progression scroll-driven : p = position dans la section
+      // Progression hybride : auto-avance lente + scroll pour accélérer
       const rect = section.getBoundingClientRect();
       const scrollableH = section.offsetHeight - window.innerHeight;
-      const rawP = scrollableH > 0 ? Math.max(0, Math.min(1, -rect.top / scrollableH)) : 0;
-      s.p  = rawP;
-      s.ep = Math.pow(rawP, EXPONENT);
+      const domP = scrollableH > 0 ? Math.max(0, Math.min(1, -rect.top / scrollableH)) : 0;
+
+      if (rect.top > 10) {
+        // Section pas encore atteinte — on reset
+        s.p = 0;
+        s.manifestStart = 0;
+      } else if (s.p < 1) {
+        // Auto-avance lente (~16s pour compléter à 60fps)
+        s.p = Math.min(1, s.p + 0.001);
+        // Le scroll prend le dessus s'il est plus loin
+        if (domP > s.p) s.p = domP;
+      }
+
+      s.ep = Math.pow(s.p, EXPONENT);
 
       // Cache le manifeste si on remonte significativement
       if (s.ep < 0.95 && s.manifestStart > 0) {
