@@ -7,7 +7,6 @@ import { useEffect, useRef } from 'react';
 
 const EXPONENT       = 1.6;
 const TUNNEL_TRAVEL  = 3200;
-const ANIM_DURATION  = 3000;   // ms — durée totale du tunnel auto
 const MAX_ROT        = 8;
 const HERO_FADE_END  = 0.18;
 const IMG_FADE_START = 0.82;
@@ -71,8 +70,6 @@ export default function ScrollTraversal() {
     p: 0, ep: 0,
     mx: 0, my: 0, rx: 0, ry: 0,
     t: 0,
-    triggered: false,
-    animStart: 0,
     manifestStart: 0,
   });
   const rafRef = useRef(0);
@@ -94,12 +91,16 @@ export default function ScrollTraversal() {
       const s = state.current;
       s.t = ts;
 
-      // Auto-play : progression temporelle déclenchée par l'intersection
-      if (s.triggered && s.animStart > 0) {
-        const elapsed = ts - s.animStart;
-        const rawP = Math.min(1, elapsed / ANIM_DURATION);
-        s.p  = rawP;
-        s.ep = Math.pow(rawP, EXPONENT);
+      // Progression scroll-driven : p = position dans la section
+      const rect = section.getBoundingClientRect();
+      const scrollableH = section.offsetHeight - window.innerHeight;
+      const rawP = scrollableH > 0 ? Math.max(0, Math.min(1, -rect.top / scrollableH)) : 0;
+      s.p  = rawP;
+      s.ep = Math.pow(rawP, EXPONENT);
+
+      // Cache le manifeste si on remonte significativement
+      if (s.ep < 0.95 && s.manifestStart > 0) {
+        s.manifestStart = 0;
       }
 
       s.rx += (-s.my * MAX_ROT - s.rx) * 0.06;
@@ -156,23 +157,10 @@ export default function ScrollTraversal() {
       rafRef.current = requestAnimationFrame(tick);
     };
 
-    // Déclenche l'animation dès que la section entre dans le viewport
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !state.current.triggered) {
-          state.current.triggered = true;
-          state.current.animStart = performance.now();
-        }
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(section);
     window.addEventListener('mousemove', onMouse, { passive: true });
     rafRef.current = requestAnimationFrame(tick);
 
     return () => {
-      observer.disconnect();
       window.removeEventListener('mousemove', onMouse);
       cancelAnimationFrame(rafRef.current);
     };
@@ -221,11 +209,11 @@ export default function ScrollTraversal() {
       <style>{`
         .traversal-section {
           position: relative;
-          height: 100vh;
+          height: 300vh;
         }
 
         .traversal-bg {
-          position: fixed;
+          position: absolute;
           inset: 0;
           background: var(--color-bg);
           z-index: -1;
@@ -234,6 +222,8 @@ export default function ScrollTraversal() {
         }
 
         .traversal-sticky {
+          position: sticky;
+          top: 0;
           height: 100vh;
           display: flex;
           align-items: center;
